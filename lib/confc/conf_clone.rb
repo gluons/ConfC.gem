@@ -10,9 +10,10 @@ module ConfC
     path,
     options = { verbose: false, overwrite: false }
   )
-    files.each do |file|
+    results = files.map do |file|
       src = File.expand_path(file, path)
       ConfC.copy(src, options)
     end
+    results.any? { |result| result } # Return true if any process succeed
   end
 end

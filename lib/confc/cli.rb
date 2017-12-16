@@ -32,8 +32,12 @@ module ConfC
       options = CLI.parse(argv)
       files = options[:files]
 
-      ConfC.conf_clone(files, options[:path], verbose: options[:verbose])
-      puts Rainbow("ConfC completed. #{AWW}").green
+      confc_options = {
+        verbose: options[:verbose],
+        overwrite: options[:overwrite]
+      }
+      confc_result = ConfC.conf_clone(files, options[:path], confc_options)
+      puts Rainbow("ConfC completed. #{AWW}").green if confc_result
     end
 
     # rubocop:disable Metrics/MethodLength, Metrics/LineLength, Metrics/AbcSize
