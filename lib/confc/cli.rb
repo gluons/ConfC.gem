@@ -28,6 +28,8 @@ module ConfC
   ##
   # ConfC's CLI class.
   class CLI
+    ##
+    # Start CLI.
     def self.start(argv)
       options = CLI.parse(argv)
       files = options[:files]
@@ -41,6 +43,8 @@ module ConfC
     end
 
     # rubocop:disable Metrics/MethodLength, Metrics/LineLength, Metrics/AbcSize
+    ##
+    # Parse CLI ARGV.
     def self.parse(argv)
       options = DEFAULT_OPTIONS.dup
 
