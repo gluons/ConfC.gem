@@ -4,6 +4,7 @@ require 'rainbow'
 require_relative 'conf_clone'
 require_relative 'files'
 require_relative 'gethome'
+require_relative 'to_filenames'
 require_relative 'version'
 
 BANNER = <<-BANNER.gsub(/^\s+/, '').freeze
@@ -13,6 +14,7 @@ BANNER = <<-BANNER.gsub(/^\s+/, '').freeze
 BANNER
 
 DEFAULT_OPTIONS = {
+  files: ConfC.files,
   path: ConfC.gethome,
   overwrite: false,
   verbose: false
@@ -27,22 +29,22 @@ module ConfC
   # ConfC's CLI class.
   class CLI
     def self.start(argv)
-      files = ConfC.files
       options = CLI.parse(argv)
+      files = options[:files]
 
       ConfC.conf_clone(files, options[:path], verbose: options[:verbose])
       puts Rainbow("ConfC completed. #{AWW}").green
     end
 
-    # rubocop:disable Metrics/MethodLength, Metrics/LineLength
+    # rubocop:disable Metrics/MethodLength, Metrics/LineLength, Metrics/AbcSize
     def self.parse(argv)
       options = DEFAULT_OPTIONS.dup
 
-      OptionParser.new do |opts|
+      parser = OptionParser.new do |opts|
         opts.banner = BANNER
 
-        opts.on('-f', '--overwrite', 'Force to overwrite') do |overwrite|
-          options[:overwrite] = overwrite
+        opts.on('-f', '--overwrite', 'Force to overwrite') do
+          options[:overwrite] = true
         end
         opts.on('-p', '--path [PATH]', String, 'Path to configuration files') do |p|
           options[:path] = p
@@ -51,19 +53,19 @@ module ConfC
           options[:verbose] = true
         end
         opts.on('-V', '--version', 'Show version number') do
-          puts ConfC::VERSION
+          puts "v#{ConfC::VERSION}"
           exit
         end
         opts.on('-h', '--help', 'Show help') do
           puts opts
           exit
         end
-
-        opts.parse(argv)
       end
+      files = parser.parse(argv)
+      options[:files] = ConfC.to_filenames(files) if files.is_a?(Array) && !files.empty?
 
       options
     end
-    # rubocop:enable Metrics/MethodLength, Metrics/LineLength
+    # rubocop:enable Metrics/MethodLength, Metrics/LineLength, Metrics/AbcSize
   end
 end
