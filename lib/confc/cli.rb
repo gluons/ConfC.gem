@@ -7,11 +7,13 @@ require_relative 'gethome'
 require_relative 'to_filenames'
 require_relative 'version'
 
-BANNER = <<-BANNER.gsub(/^\s+/, '').freeze
-  Usage: #{Rainbow('confc').green} [options] [filenames...]
+# rubocop:disable Layout/IndentHeredoc
+BANNER = <<-BANNER.freeze
+Usage: #{Rainbow('confc').green} [options] [filenames...]
 
-  Clone your default configuration files to current working directory.
+Clone your default configuration files to current working directory.
 BANNER
+# rubocop:enable Layout/IndentHeredoc
 
 DEFAULT_OPTIONS = {
   files: ConfC.files,
