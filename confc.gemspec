@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'rainbow', '~> 2.2', '>= 2.2.2'
 
+  s.add_development_dependency 'aruba', '~> 0.14.3'
   s.add_development_dependency 'rake', '~> 12.3'
   s.add_development_dependency 'rspec', '~> 3.7'
   s.add_development_dependency 'rubocop', '~> 0.51.0'
