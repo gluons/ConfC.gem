@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.1.0'
   s.author = 'Saran Tanpituckpong'
   s.license = 'MIT'
-  s.homepage = 'https://github.com/gluons/ConfC.gem'
+  s.homepage = 'https://gluons.github.io/ConfC.gem/'
   s.metadata = {
     'bug_tracker_uri' => 'https://github.com/gluons/ConfC.gem/issues'
   }
