@@ -6,5 +6,5 @@ RSpec::Core::RakeTask.new(:spec) do |t|
   t.verbose = false
 end
 
-desc 'Run spec task'
-task default: :spec
+desc 'Run lint & spec task'
+task default: %w[lint spec]
