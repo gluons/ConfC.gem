@@ -23,11 +23,11 @@ Gem::Specification.new do |s|
     'bug_tracker_uri' => 'https://github.com/gluons/ConfC.gem/issues'
   }
 
-  s.add_runtime_dependency 'rainbow', '~> 2.2', '>= 2.2.2'
+  s.add_runtime_dependency 'rainbow', '~> 3.0'
   s.add_runtime_dependency 'tty-prompt', '~> 0.13.2'
 
   s.add_development_dependency 'aruba', '~> 0.14.3'
   s.add_development_dependency 'rake', '~> 12.3'
   s.add_development_dependency 'rspec', '~> 3.7'
-  s.add_development_dependency 'rubocop', '~> 0.51.0'
+  s.add_development_dependency 'rubocop', '~> 0.52.1'
 end
