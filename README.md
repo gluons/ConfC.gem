@@ -20,8 +20,9 @@ gem install confc
 Usage: confc [options] [filenames...]
 
 Clone your default configuration files to current working directory.
-    -f, --overwrite                  Force to overwrite
     -p, --path [PATH]                Path to configuration files
+    -f, --overwrite                  Force to overwrite
+    -y, --yes                        Say yes without inquiry
     -v, --verbose                    Display more information
     -V, --version                    Show version number
     -h, --help                       Show help
