@@ -8,12 +8,13 @@ end
 # Clean existing cloned files
 def clean_test
   FileUtils.rm Dir.glob('spec/fixtures/cli/*'), force: true
+  FileUtils.touch 'spec/fixtures/cli/.gitkeep'
 end
 
 RSpec.describe 'Run `confc` command', type: :aruba do
   before(:each) do
     clean_test
-    run('confc -p ../src a c')
+    run('confc -y -p ../src a c')
   end
   after(:all) { clean_test }
 
@@ -25,7 +26,7 @@ RSpec.describe 'Run `confc` command', type: :aruba do
   let(:content_c) { 'c' }
 
   it 'should run an expected command' do
-    expect(last_command_stopped.commandline).to eq 'confc -p ../src a c'
+    expect(last_command_stopped.commandline).to eq 'confc -y -p ../src a c'
   end
 
   it 'should have expected files' do

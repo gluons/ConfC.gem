@@ -8,7 +8,7 @@ module ConfC
   def self.conf_clone(
     files,
     path,
-    options = { verbose: false, overwrite: false }
+    options = { overwrite: false, verbose: false }
   )
     results = files.map do |file|
       src = File.expand_path(file, path)

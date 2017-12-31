@@ -1,8 +1,10 @@
 require 'optparse'
 require 'rainbow'
 
+require_relative 'ask_choose_files'
 require_relative 'conf_clone'
 require_relative 'files'
+require_relative 'get_existent_files'
 require_relative 'gethome'
 require_relative 'to_filenames'
 require_relative 'version'
@@ -19,6 +21,7 @@ DEFAULT_OPTIONS = {
   files: ConfC.files,
   path: ConfC.gethome,
   overwrite: false,
+  yes: false,
   verbose: false
 }.freeze
 
@@ -27,6 +30,8 @@ AWW = '(｡◕‿◕｡)'.freeze
 ##
 # ConfC
 module ConfC
+  # rubocop:disable Metrics/MethodLength, Metrics/LineLength, Metrics/AbcSize
+
   ##
   # ConfC's CLI class.
   class CLI
@@ -37,14 +42,16 @@ module ConfC
       files = options[:files]
 
       confc_options = {
-        verbose: options[:verbose],
-        overwrite: options[:overwrite]
+        overwrite: options[:overwrite],
+        yes: options[:yes],
+        verbose: options[:verbose]
       }
-      confc_result = ConfC.conf_clone(files, options[:path], confc_options)
+      existent_files = ConfC.get_existent_files(options[:path], files)
+      chosen_files = options[:yes] ? existent_files : ConfC.ask_choose_files(existent_files)
+      confc_result = ConfC.conf_clone(chosen_files, options[:path], confc_options)
       puts Rainbow("ConfC completed. #{AWW}").green if confc_result
     end
 
-    # rubocop:disable Metrics/MethodLength, Metrics/LineLength, Metrics/AbcSize
     ##
     # Parse CLI ARGV.
     def self.parse(argv)
@@ -53,11 +60,14 @@ module ConfC
       parser = OptionParser.new do |opts|
         opts.banner = BANNER
 
+        opts.on('-p', '--path [PATH]', String, 'Path to configuration files') do |p|
+          options[:path] = p
+        end
         opts.on('-f', '--overwrite', 'Force to overwrite') do
           options[:overwrite] = true
         end
-        opts.on('-p', '--path [PATH]', String, 'Path to configuration files') do |p|
-          options[:path] = p
+        opts.on('-y', '--yes', 'Say yes without inquiry') do
+          options[:yes] = true
         end
         opts.on('-v', '--verbose', 'Display more information') do
           options[:verbose] = true
@@ -76,6 +86,7 @@ module ConfC
 
       options
     end
+
     # rubocop:enable Metrics/MethodLength, Metrics/LineLength, Metrics/AbcSize
   end
 end
