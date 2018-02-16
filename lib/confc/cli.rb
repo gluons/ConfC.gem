@@ -37,7 +37,6 @@ module ConfC
 
       confc_options = {
         overwrite: options[:overwrite],
-        yes: options[:yes],
         verbose: options[:verbose]
       }
       existent_files = ConfC.get_existent_files(options[:path], files)
