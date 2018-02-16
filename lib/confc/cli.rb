@@ -6,6 +6,7 @@ require_relative 'conf_clone'
 require_relative 'files'
 require_relative 'get_existent_files'
 require_relative 'gethome'
+require_relative 'load_config'
 require_relative 'to_filenames'
 require_relative 'version'
 
@@ -16,14 +17,6 @@ Usage: #{Rainbow('confc').green} [options] [filenames...]
 Clone your default configuration files to current working directory.
 BANNER
 # rubocop:enable Layout/IndentHeredoc
-
-DEFAULT_OPTIONS = {
-  files: ConfC.files,
-  path: ConfC.gethome,
-  overwrite: false,
-  yes: false,
-  verbose: false
-}.freeze
 
 AWW = '(｡◕‿◕｡)'.freeze
 
@@ -55,7 +48,7 @@ module ConfC
     ##
     # Parse CLI ARGV.
     def self.parse(argv)
-      options = DEFAULT_OPTIONS.dup
+      options = ConfC.load_config
 
       parser = OptionParser.new do |opts|
         opts.banner = BANNER

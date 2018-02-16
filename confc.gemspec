@@ -23,6 +23,8 @@ Gem::Specification.new do |s|
     'bug_tracker_uri' => 'https://github.com/gluons/ConfC.gem/issues'
   }
 
+  s.add_runtime_dependency 'activesupport', '~> 5.1', '>= 5.1.5'
+  s.add_runtime_dependency 'mysticonfig', '~> 0.1.0'
   s.add_runtime_dependency 'rainbow', '~> 3.0'
   s.add_runtime_dependency 'tty-prompt', '~> 0.15.0'
 
