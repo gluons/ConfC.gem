@@ -15,6 +15,7 @@ BANNER = <<-BANNER.freeze
 Usage: #{Rainbow('confc').green} [options] [filenames...]
 
 Clone your default configuration files to current working directory.
+
 BANNER
 # rubocop:enable Layout/IndentHeredoc
 
