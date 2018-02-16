@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.files = ['confc.gemspec', 'LICENSE', 'Gemfile', 'files.yaml']
   s.files += Dir['*.md', 'bin/*', 'lib/**/*']
   s.executables = ['confc']
-  s.required_ruby_version = '>= 2.1.0'
+  s.required_ruby_version = '>= 2.2.2'
   s.author = 'Saran Tanpituckpong'
   s.license = 'MIT'
   s.homepage = 'https://gluons.github.io/ConfC.gem/'
