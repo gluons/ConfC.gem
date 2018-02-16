@@ -28,6 +28,38 @@ Clone your default configuration files to current working directory.
     -h, --help                       Show help
 ```
 
+## Configuration
+
+You can configure **ConfC** via `.confcrc`, `.confcrc.json`, `.confcrc.yml` or `.confcrc.yaml` file.  
+More information about configuration file can be found from [mysticonfig](https://git.io/mysticonfig).
+
+### .confcrc
+ - **path**  
+   Type: `String`  
+   Default: **$HOME** (Your **home** directory)
+
+   Path to directory that contain your default configuration files.
+
+ - **files**  
+   Type: `Array<String>`  
+   Default: Files name in [files.yaml](./files.yaml)
+
+   List of target files name that you want to clone.
+
+   > If you have your own configuration files and don't want to use files from [files.yaml](./files.yaml), just replace it with your files name by this option.
+
+ - **overwrite**  
+   Type: `Boolean`  
+   Default: `false`
+   
+   Force to overwrite files if it exists.
+
+ - **verbose**  
+   Type: `Boolean`  
+   Default: `false`
+
+   Display verbose information.
+
 ## Related
 
 - [ConfC](https://github.com/gluons/ConfC) - 🆕 Start new project with your default configs. (Node.js version)
