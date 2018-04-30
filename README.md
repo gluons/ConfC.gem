@@ -2,6 +2,7 @@
 [![license](https://img.shields.io/github/license/gluons/ConfC.gem.svg?style=flat-square)](./LICENSE)
 [![Gem](https://img.shields.io/gem/v/confc.svg?style=flat-square)](https://rubygems.org/gems/confc)
 [![Gem](https://img.shields.io/gem/dt/confc.svg?style=flat-square)](https://rubygems.org/gems/confc)
+[![Libraries.io for GitHub](https://img.shields.io/librariesio/github/gluons/ConfC.gem.svg?style=flat-square)](https://libraries.io/github/gluons/ConfC.gem)
 [![Travis](https://img.shields.io/travis/gluons/ConfC.gem.svg?style=flat-square)](https://travis-ci.org/gluons/ConfC.gem)
 
 **Config Clone** — 🆕 Start new project with your default configs.
